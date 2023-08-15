@@ -36,7 +36,7 @@ func CorsFilter(ctx *context.Context) {
 	if ctx.Request.Method == "POST" && ctx.Request.RequestURI == "/api/login/oauth/access_token" {
 		ctx.Output.Header(headerAllowOrigin, origin)
 		ctx.Output.Header(headerAllowMethods, "POST, GET, OPTIONS, DELETE")
-		ctx.Output.Header(headerAllowHeaders, "Content-Type, Authorization, X-Requested-With")
+		ctx.Output.Header(headerAllowHeaders, "Content-Type, Authorization")
 		return
 	}
 
@@ -49,7 +49,7 @@ func CorsFilter(ctx *context.Context) {
 		if ok {
 			ctx.Output.Header(headerAllowOrigin, origin)
 			ctx.Output.Header(headerAllowMethods, "POST, GET, OPTIONS, DELETE")
-			ctx.Output.Header(headerAllowHeaders, "Content-Type, Authorization, X-Requested-With")
+			ctx.Output.Header(headerAllowHeaders, "Content-Type, Authorization")
 		} else {
 			ctx.ResponseWriter.WriteHeader(http.StatusForbidden)
 			return
